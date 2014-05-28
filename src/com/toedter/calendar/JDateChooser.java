@@ -246,7 +246,9 @@ public class JDateChooser extends JPanel implements ActionListener,
 
 		// The following idea was originally provided by forum user
 		// podiatanapraia:
-		changeListener = new ChangeListener() {
+		// and further modified to solve a leak that the 'fix' caused by 
+		//  Kris Kemper
+		final ChangeListener changeListenerToBeWrapped = new ChangeListener() {
 			boolean hasListened = false;
 
 			@Override
@@ -271,12 +273,19 @@ public class JDateChooser extends JPanel implements ActionListener,
 				}
 			}
 		};
+		changeListener = new WeakChangeListenerProxy(changeListenerToBeWrapped);
 		MenuSelectionManager.defaultManager().addChangeListener(changeListener);
 		// end of code provided by forum user podiatanapraia
 
 		isInitialized = true;
 	}
-
+	
+	@Override
+	protected void finalize() throws Throwable {
+	    super.finalize();
+	    MenuSelectionManager.defaultManager().removeChangeListener(changeListener);
+	}
+	
 	/**
 	 * Called when the calendar button was pressed.
 	 * 

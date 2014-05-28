@@ -97,7 +97,7 @@
 	<!-- ===================================================================== -->
 
 	<target name="dist" depends="jar, javadocs,runTests">
-		<echo message="Running JCalendar integration distribution veryion  ${version}, modification date ${modified}" />
+		<echo message="Running JCalendar integration distribution version  ${version}, modification date ${modified}" />
 
 		<filter token="VERSION" value="${version}" />
 		<filter token="MODIFIED" value="${modified}" />
