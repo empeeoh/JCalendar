@@ -7,34 +7,42 @@ public class MinMaxDateEvaluator implements IDateEvaluator {
 
 	private DateUtil dateUtil = new DateUtil();
 	
+	@Override
 	public boolean isSpecial(Date date) {
 		return false;
 	}
 
+	@Override
 	public Color getSpecialForegroundColor() {
 		return null;
 	}
 
+	@Override
 	public Color getSpecialBackroundColor() {
 		return null;
 	}
 
+	@Override
 	public String getSpecialTooltip() {
 		return null;
 	}
 
+	@Override
 	public boolean isInvalid(Date date) {
 		return !dateUtil.checkDate(date);
 	}
 
+	@Override
 	public Color getInvalidForegroundColor() {
 		return null;
 	}
 
+	@Override
 	public Color getInvalidBackroundColor() {
 		return null;
 	}
 
+	@Override
 	public String getInvalidTooltip() {
 		return null;
 	}

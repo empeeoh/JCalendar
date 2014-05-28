@@ -225,6 +225,7 @@ public class JCalendar extends JPanel implements PropertyChangeListener {
 		todayButton = new JButton();
 		todayButton.addActionListener(new ActionListener() {
 
+			@Override
 			public void actionPerformed(ActionEvent e) {
 				setDate(new Date());
 			}
@@ -232,6 +233,7 @@ public class JCalendar extends JPanel implements PropertyChangeListener {
 		nullDateButton = new JButton();
 		nullDateButton.addActionListener(new ActionListener() {
 
+			@Override
 			public void actionPerformed(ActionEvent e) {
 				dayChooser.firePropertyChange("day", 0, -1);
 			}
@@ -290,6 +292,7 @@ public class JCalendar extends JPanel implements PropertyChangeListener {
 	 * 
 	 * @see #setLocale
 	 */
+	@Override
 	public Locale getLocale() {
 		return locale;
 	}
@@ -328,6 +331,7 @@ public class JCalendar extends JPanel implements PropertyChangeListener {
 	 * @param evt
 	 *            the property change event
 	 */
+	@Override
 	public void propertyChange(PropertyChangeEvent evt) {
 		if (calendar != null) {
 			Calendar c = (Calendar) calendar.clone();
@@ -355,6 +359,7 @@ public class JCalendar extends JPanel implements PropertyChangeListener {
 	 * @param bg
 	 *            the new background
 	 */
+	@Override
 	public void setBackground(Color bg) {
 		super.setBackground(bg);
 
@@ -394,10 +399,12 @@ public class JCalendar extends JPanel implements PropertyChangeListener {
 		calendar = c;
 
 		if (update) {
-			// Thanks to Jeff Ulmer for correcting a bug in the sequence :)
-			yearChooser.setYear(c.get(Calendar.YEAR));
-			monthChooser.setMonth(c.get(Calendar.MONTH));
-			dayChooser.setDay(c.get(Calendar.DATE));
+			if(c != null){
+				// Thanks to Jeff Ulmer for correcting a bug in the sequence :)
+				yearChooser.setYear(c.get(Calendar.YEAR));
+				monthChooser.setMonth(c.get(Calendar.MONTH));
+				dayChooser.setDay(c.get(Calendar.DATE));
+			}
 		}
 
 		firePropertyChange("calendar", oldCalendar, calendar);
@@ -409,6 +416,7 @@ public class JCalendar extends JPanel implements PropertyChangeListener {
 	 * @param enabled
 	 *            the new enabled value
 	 */
+	@Override
 	public void setEnabled(boolean enabled) {
 		super.setEnabled(enabled);
 
@@ -424,6 +432,7 @@ public class JCalendar extends JPanel implements PropertyChangeListener {
 	 * 
 	 * @return true, if enabled.
 	 */
+	@Override
 	public boolean isEnabled() {
 		return super.isEnabled();
 	}
@@ -434,6 +443,7 @@ public class JCalendar extends JPanel implements PropertyChangeListener {
 	 * @param font
 	 *            the new font
 	 */
+	@Override
 	public void setFont(Font font) {
 		super.setFont(font);
 
@@ -450,6 +460,7 @@ public class JCalendar extends JPanel implements PropertyChangeListener {
 	 * @param fg
 	 *            the new foreground
 	 */
+	@Override
 	public void setForeground(Color fg) {
 		super.setForeground(fg);
 
@@ -468,6 +479,7 @@ public class JCalendar extends JPanel implements PropertyChangeListener {
 	 * 
 	 * @see #getLocale
 	 */
+	@Override
 	public void setLocale(Locale l) {
 		if (!initialized) {
 			super.setLocale(l);
@@ -635,7 +647,7 @@ public class JCalendar extends JPanel implements PropertyChangeListener {
 	 */
 	public void setSelectableDateRange(Date min, Date max) {
 		dayChooser.setSelectableDateRange(min, max);
-	};
+	}
 
 	/**
 	 * Gets the minimum selectable date.
@@ -816,7 +828,7 @@ public class JCalendar extends JPanel implements PropertyChangeListener {
 	 *            the new text
 	 */
 	public void setTodayButtonText(String todayButtonText) {
-		if (todayButtonText != null & todayButtonText.trim().length() == 0) {
+		if (todayButtonText != null && todayButtonText.trim().length() == 0) {
 			this.todayButtonText = null;
 		} else {
 			this.todayButtonText = todayButtonText;
@@ -839,7 +851,7 @@ public class JCalendar extends JPanel implements PropertyChangeListener {
 	 */
 	public void setNullDateButtonText(String nullDateButtonText) {
 		if (nullDateButtonText != null
-				& nullDateButtonText.trim().length() == 0) {
+			&& nullDateButtonText.trim().length() == 0) {
 			this.nullDateButtonText = null;
 		} else {
 			this.nullDateButtonText = nullDateButtonText;

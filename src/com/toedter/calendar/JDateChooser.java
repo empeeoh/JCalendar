@@ -203,6 +203,7 @@ public class JDateChooser extends JPanel implements ActionListener,
 		calendarButton = new JButton(icon) {
 			private static final long serialVersionUID = -1913767779079949668L;
 
+			@Override
 			public boolean isFocusable() {
 				return false;
 			}
@@ -222,6 +223,7 @@ public class JDateChooser extends JPanel implements ActionListener,
 		popup = new JPopupMenu() {
 			private static final long serialVersionUID = -6078272560337577761L;
 
+			@Override
 			public void setVisible(boolean b) {
 				Boolean isCanceled = (Boolean) getClientProperty("JPopupMenu.firePopupMenuCanceled");
 				if (b
@@ -247,6 +249,7 @@ public class JDateChooser extends JPanel implements ActionListener,
 		changeListener = new ChangeListener() {
 			boolean hasListened = false;
 
+			@Override
 			public void stateChanged(ChangeEvent e) {
 				if (hasListened) {
 					hasListened = false;
@@ -280,6 +283,7 @@ public class JDateChooser extends JPanel implements ActionListener,
 	 * @param e
 	 *            the action event
 	 */
+	@Override
 	public void actionPerformed(ActionEvent e) {
 		int x = calendarButton.getWidth()
 				- (int) popup.getPreferredSize().getWidth();
@@ -302,6 +306,7 @@ public class JDateChooser extends JPanel implements ActionListener,
 	 * @param evt
 	 *            the event
 	 */
+	@Override
 	public void propertyChange(PropertyChangeEvent evt) {
 		if (evt.getPropertyName().equals("day")) {
 			if (popup.isVisible()) {
@@ -325,6 +330,7 @@ public class JDateChooser extends JPanel implements ActionListener,
 	/**
 	 * Updates the UI of itself and the popup.
 	 */
+	@Override
 	public void updateUI() {
 		super.updateUI();
 		setEnabled(isEnabled());
@@ -340,6 +346,7 @@ public class JDateChooser extends JPanel implements ActionListener,
 	 * @param l
 	 *            The new locale value
 	 */
+	@Override
 	public void setLocale(Locale l) {
 		super.setLocale(l);
 		dateEditor.setLocale(l);
@@ -426,6 +433,7 @@ public class JDateChooser extends JPanel implements ActionListener,
 	 * @param enabled
 	 *            the new enabled value
 	 */
+	@Override
 	public void setEnabled(boolean enabled) {
 		super.setEnabled(enabled);
 		if (dateEditor != null) {
@@ -439,6 +447,7 @@ public class JDateChooser extends JPanel implements ActionListener,
 	 * 
 	 * @return true, if enabled.
 	 */
+	@Override
 	public boolean isEnabled() {
 		return super.isEnabled();
 	}
@@ -459,6 +468,7 @@ public class JDateChooser extends JPanel implements ActionListener,
 	 * @param font
 	 *            the new font
 	 */
+	@Override
 	public void setFont(Font font) {
 		if (isInitialized) {
 			dateEditor.getUiComponent().setFont(font);
@@ -552,6 +562,7 @@ public class JDateChooser extends JPanel implements ActionListener,
 		changeListener = null;
 	}
 
+	@Override
 	public boolean requestFocusInWindow() {
 		if (dateEditor instanceof JComponent) {
 			return ((JComponent) dateEditor).requestFocusInWindow();

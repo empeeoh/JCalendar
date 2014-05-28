@@ -42,6 +42,7 @@ public class JDateChooserCellEditor extends AbstractCellEditor implements
 
 	private JDateChooser dateChooser = new JDateChooser();
 
+	@Override
 	public Component getTableCellEditorComponent(JTable table, Object value,
 			boolean isSelected, int row, int column) {
 
@@ -54,6 +55,7 @@ public class JDateChooserCellEditor extends AbstractCellEditor implements
 		return dateChooser;
 	}
 
+	@Override
 	public Object getCellEditorValue() {
 		return dateChooser.getDate();
 	}

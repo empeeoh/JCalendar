@@ -46,6 +46,7 @@ public class JSpinnerDateEditor extends JSpinner implements IDateEditor,
 		addChangeListener(this);
 	}
 
+	@Override
 	public Date getDate() {
 		if (date == null) {
 			return null;
@@ -53,6 +54,7 @@ public class JSpinnerDateEditor extends JSpinner implements IDateEditor,
 		return ((SpinnerDateModel) getModel()).getDate();
 	}
 
+	@Override
 	public void setDate(Date date) {
 		setDate(date, true);
 	}
@@ -73,6 +75,7 @@ public class JSpinnerDateEditor extends JSpinner implements IDateEditor,
 		firePropertyChange("date", oldDate, date);
 	}
 
+	@Override
 	public void setDateFormatString(String dateFormatString) {
 		try {
 			dateFormatter.applyPattern(dateFormatString);
@@ -97,14 +100,17 @@ public class JSpinnerDateEditor extends JSpinner implements IDateEditor,
 		}
 	}
 
+	@Override
 	public String getDateFormatString() {
 		return dateFormatString;
 	}
 
+	@Override
 	public JComponent getUiComponent() {
 		return this;
 	}
 
+	@Override
 	public void setLocale(Locale locale) {
 		super.setLocale(locale);
 		dateFormatter = (SimpleDateFormat) DateFormat.getDateInstance(
@@ -118,6 +124,7 @@ public class JSpinnerDateEditor extends JSpinner implements IDateEditor,
 	 * 
 	 * @see java.awt.event.FocusListener#focusLost(java.awt.event.FocusEvent)
 	 */
+	@Override
 	public void focusLost(FocusEvent focusEvent) {
 		String text = ((JSpinner.DateEditor) getEditor()).getTextField()
 				.getText();
@@ -131,6 +138,7 @@ public class JSpinnerDateEditor extends JSpinner implements IDateEditor,
 	 * 
 	 * @see java.awt.event.FocusListener#focusGained(java.awt.event.FocusEvent)
 	 */
+	@Override
 	public void focusGained(FocusEvent e) {
 	}
 
@@ -139,6 +147,7 @@ public class JSpinnerDateEditor extends JSpinner implements IDateEditor,
 	 * 4991597 and sets the background explicitely to a
 	 * TextField.inactiveBackground.
 	 */
+	@Override
 	public void setEnabled(boolean b) {
 		super.setEnabled(b);
 		if (!b) {
@@ -150,6 +159,7 @@ public class JSpinnerDateEditor extends JSpinner implements IDateEditor,
 	/* (non-Javadoc)
 	 * @see com.toedter.calendar.IDateEditor#getMaxSelectableDate()
 	 */
+	@Override
 	public Date getMaxSelectableDate() {
 		return (Date) ((SpinnerDateModel) getModel()).getEnd();
 	}
@@ -157,6 +167,7 @@ public class JSpinnerDateEditor extends JSpinner implements IDateEditor,
 	/**
 	 * @see com.toedter.calendar.IDateEditor#getMinSelectableDate()
 	 */
+	@Override
 	public Date getMinSelectableDate() {
 		return (Date) ((SpinnerDateModel) getModel()).getStart();
 	}
@@ -164,6 +175,7 @@ public class JSpinnerDateEditor extends JSpinner implements IDateEditor,
 	/**
 	 * @see com.toedter.calendar.IDateEditor#setMaxSelectableDate(java.util.Date)
 	 */
+	@Override
 	public void setMaxSelectableDate(Date max) {
 		((SpinnerDateModel) getModel()).setEnd(max);
 	}
@@ -171,6 +183,7 @@ public class JSpinnerDateEditor extends JSpinner implements IDateEditor,
 	/**
 	 * @see com.toedter.calendar.IDateEditor#setMinSelectableDate(java.util.Date)
 	 */
+	@Override
 	public void setMinSelectableDate(Date min) {
 		((SpinnerDateModel) getModel()).setStart(min);
 	}
@@ -178,6 +191,7 @@ public class JSpinnerDateEditor extends JSpinner implements IDateEditor,
 	/**
 	 * @see com.toedter.calendar.IDateEditor#setSelectableDateRange(java.util.Date, java.util.Date)
 	 */
+	@Override
 	public void setSelectableDateRange(Date min, Date max) {
 		setMaxSelectableDate(max);
 		setMinSelectableDate(min);
@@ -186,6 +200,7 @@ public class JSpinnerDateEditor extends JSpinner implements IDateEditor,
 	/**
 	 * @see javax.swing.event.ChangeListener#stateChanged(javax.swing.event.ChangeEvent)
 	 */
+	@Override
 	public void stateChanged(ChangeEvent e) {
 		setDate(((SpinnerDateModel) getModel()).getDate(), false);
 	}

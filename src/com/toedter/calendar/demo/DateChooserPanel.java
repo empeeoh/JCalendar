@@ -95,6 +95,7 @@ public class DateChooserPanel extends JPanel implements PropertyChangeListener {
 		JPanel blankLine = new JPanel() {
 			private static final long serialVersionUID = 4514530330521503732L;
 
+			@Override
 			public Dimension getPreferredSize() {
 				return new Dimension(10, 3);
 			}
@@ -147,6 +148,7 @@ public class DateChooserPanel extends JPanel implements PropertyChangeListener {
 		}
 	}
 
+	@Override
 	public void propertyChange(PropertyChangeEvent evt) {
 		if (evt.getPropertyName().equals("date")) {
 			setDate((Date) evt.getNewValue());
@@ -156,6 +158,7 @@ public class DateChooserPanel extends JPanel implements PropertyChangeListener {
 	/**
 	 * Returns the locale of the first JDateChooser.
 	 */
+	@Override
 	public Locale getLocale() {
 		return ((JDateChooser) components[0]).getLocale();
 	}
@@ -163,6 +166,7 @@ public class DateChooserPanel extends JPanel implements PropertyChangeListener {
 	/**
 	 * Sets the locale of the first 4 JDateChoosers.
 	 */
+	@Override
 	public void setLocale(Locale locale) {
 		for (int i = 0; i < 5; i++) {
 			components[i].setLocale(locale);
@@ -174,6 +178,7 @@ public class DateChooserPanel extends JPanel implements PropertyChangeListener {
 	 * 
 	 * @see java.awt.Component#isEnabled()
 	 */
+	@Override
 	public boolean isEnabled() {
 		return ((JDateChooser) components[0]).isEnabled();
 	}
@@ -183,6 +188,7 @@ public class DateChooserPanel extends JPanel implements PropertyChangeListener {
 	 * 
 	 * @see javax.swing.JComponent#setEnabled(boolean)
 	 */
+	@Override
 	public void setEnabled(boolean enabled) {
 		for (int i = 0; i < 5; i++) {
 			components[i].setEnabled(enabled);

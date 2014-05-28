@@ -67,7 +67,7 @@ public class JMonthChooser extends JPanel implements ItemListener,
 
 	private JYearChooser yearChooser;
 
-	private JComboBox comboBox;
+	private JComboBox<String> comboBox;
 
 	private JSpinner spinner;
 
@@ -95,7 +95,7 @@ public class JMonthChooser extends JPanel implements ItemListener,
 
 		setLayout(new BorderLayout());
 
-		comboBox = new JComboBox();
+		comboBox = new JComboBox<>();
 		comboBox.addItemListener(this);
 
 		// comboBox.addPopupMenuListener(this);
@@ -108,6 +108,7 @@ public class JMonthChooser extends JPanel implements ItemListener,
 
 				private final JTextField textField = new JTextField();
 
+				@Override
 				public Dimension getPreferredSize() {
 					Dimension size = super.getPreferredSize();
 					return new Dimension(size.width,
@@ -155,6 +156,7 @@ public class JMonthChooser extends JPanel implements ItemListener,
 	 * @param e
 	 *            the change event.
 	 */
+	@Override
 	public void stateChanged(ChangeEvent e) {
 		SpinnerNumberModel model = (SpinnerNumberModel) ((JSpinner) e
 				.getSource()).getModel();
@@ -199,6 +201,7 @@ public class JMonthChooser extends JPanel implements ItemListener,
 	 * @param e
 	 *            the item event
 	 */
+	@Override
 	public void itemStateChanged(ItemEvent e) {
 		if (e.getStateChange() == ItemEvent.SELECTED) {
 			int index = comboBox.getSelectedIndex();
@@ -294,6 +297,7 @@ public class JMonthChooser extends JPanel implements ItemListener,
 	 * 
 	 * @see #setLocale
 	 */
+	@Override
 	public Locale getLocale() {
 		return locale;
 	}
@@ -306,6 +310,7 @@ public class JMonthChooser extends JPanel implements ItemListener,
 	 * 
 	 * @see #getLocale
 	 */
+	@Override
 	public void setLocale(Locale l) {
 		if (!initialized) {
 			super.setLocale(l);
@@ -321,6 +326,7 @@ public class JMonthChooser extends JPanel implements ItemListener,
 	 * @param enabled
 	 *            the new enabled value
 	 */
+	@Override
 	public void setEnabled(boolean enabled) {
 		super.setEnabled(enabled);
 		comboBox.setEnabled(enabled);
@@ -367,6 +373,7 @@ public class JMonthChooser extends JPanel implements ItemListener,
 	 * @param font
 	 *            the desired <code>Font</code> for this component
 	 */
+	@Override
 	public void setFont(Font font) {
 		if (comboBox != null) {
 			comboBox.setFont(font);
@@ -379,6 +386,7 @@ public class JMonthChooser extends JPanel implements ItemListener,
 	 * 
 	 * @see javax.swing.JPanel#updateUI()
 	 */
+	@Override
 	public void updateUI() {
 		final JSpinner testSpinner = new JSpinner();
 		if (spinner != null) {
@@ -390,6 +398,7 @@ public class JMonthChooser extends JPanel implements ItemListener,
 		}
 	}
 
+	@Override
 	public void paintComponent(Graphics g) {
 		if ("Nimbus".equals(UIManager.getLookAndFeel().getID())) {
 			getParent().repaint(); // fixes repaint bug in Nimbus L&F

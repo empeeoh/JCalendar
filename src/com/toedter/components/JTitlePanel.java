@@ -95,7 +95,8 @@ public class JTitlePanel extends JPanel {
             setBackground(background);
         }
 
-        public void paintComponent(Graphics g) {
+        @Override
+		public void paintComponent(Graphics g) {
             super.paintComponent(g);
 
             if (isOpaque()) {

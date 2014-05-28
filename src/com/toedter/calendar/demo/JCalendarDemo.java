@@ -108,6 +108,7 @@ public class JCalendarDemo extends JApplet implements PropertyChangeListener {
 	/**
 	 * Initializes the applet.
 	 */
+	@Override
 	public void init() {
 		// Set the JGoodies Plastic 3D look and feel
 		initializeLookAndFeels();
@@ -167,8 +168,8 @@ public class JCalendarDemo extends JApplet implements PropertyChangeListener {
 	/**
 	 * Installs the JGoodies Look & Feels, if available, in classpath.
 	 */
-	public final void initializeLookAndFeels() {
-		// if in classpath thry to load JGoodies Plastic Look & Feel
+	static public final void initializeLookAndFeels() {
+		// if in classpath try to load JGoodies Plastic Look & Feel
 		try {
 			LookAndFeelInfo[] lnfs = UIManager.getInstalledLookAndFeels();
 			boolean found = false;
@@ -230,6 +231,7 @@ public class JCalendarDemo extends JApplet implements PropertyChangeListener {
 				button = new JButton(icon);
 
 				ActionListener actionListener = new ActionListener() {
+					@Override
 					public void actionPerformed(ActionEvent e) {
 						installBean(bean);
 					}
@@ -283,6 +285,7 @@ public class JCalendarDemo extends JApplet implements PropertyChangeListener {
 
 			final JComponent bean = beans[i];
 			ActionListener actionListener = new ActionListener() {
+				@Override
 				public void actionPerformed(ActionEvent e) {
 					installBean(bean);
 				}
@@ -317,6 +320,7 @@ public class JCalendarDemo extends JApplet implements PropertyChangeListener {
 				rbmi.addItemListener(
 				// inlining
 				new ItemListener() {
+					@Override
 					public void itemStateChanged(ItemEvent ie) {
 						JRadioButtonMenuItem rbmi2 = (JRadioButtonMenuItem) ie
 								.getSource();
@@ -380,6 +384,7 @@ public class JCalendarDemo extends JApplet implements PropertyChangeListener {
 	 * @param evt
 	 *            Description of the Parameter
 	 */
+	@Override
 	public void propertyChange(PropertyChangeEvent evt) {
 		if (calendarPanel != null) {
 			if (evt.getPropertyName().equals("calendar")) {
@@ -399,6 +404,7 @@ public class JCalendarDemo extends JApplet implements PropertyChangeListener {
 	 */
 	public static void main(String[] s) {
 		WindowListener l = new WindowAdapter() {
+			@Override
 			public void windowClosing(WindowEvent e) {
 				System.exit(0);
 			}
@@ -477,6 +483,7 @@ public class JCalendarDemo extends JApplet implements PropertyChangeListener {
 								final JCheckBox checkBox = new JCheckBox("",
 										isSelected);
 								checkBox.addActionListener(new ActionListener() {
+									@Override
 									public void actionPerformed(
 											ActionEvent event) {
 										try {
@@ -503,6 +510,7 @@ public class JCalendarDemo extends JApplet implements PropertyChangeListener {
 								JSpinField spinField = new JSpinField();
 								spinField
 										.addPropertyChangeListener(new PropertyChangeListener() {
+											@Override
 											public void propertyChange(
 													PropertyChangeEvent evt) {
 												try {
@@ -541,6 +549,7 @@ public class JCalendarDemo extends JApplet implements PropertyChangeListener {
 
 								JTextField textField = new JTextField(string);
 								ActionListener actionListener = new ActionListener() {
+									@Override
 									public void actionPerformed(ActionEvent e) {
 										try {
 											writeMethod
@@ -583,6 +592,7 @@ public class JCalendarDemo extends JApplet implements PropertyChangeListener {
 
 								dateChooser
 										.addPropertyChangeListener(new PropertyChangeListener() {
+											@Override
 											public void propertyChange(
 													PropertyChangeEvent evt) {
 												try {
@@ -611,6 +621,7 @@ public class JCalendarDemo extends JApplet implements PropertyChangeListener {
 									button.setBackground(colorObj);
 
 									ActionListener actionListener = new ActionListener() {
+										@Override
 										public void actionPerformed(
 												ActionEvent e) {
 											Color newColor = JColorChooser
@@ -690,6 +701,7 @@ public class JCalendarDemo extends JApplet implements PropertyChangeListener {
 		JPanel blankLine = new JPanel() {
 			private static final long serialVersionUID = 4514530330521503732L;
 
+			@Override
 			public Dimension getPreferredSize() {
 				return new Dimension(10, 2);
 			}
@@ -724,6 +736,7 @@ public class JCalendarDemo extends JApplet implements PropertyChangeListener {
 		 * @param event
 		 *            Description of the Parameter
 		 */
+		@Override
 		public void actionPerformed(ActionEvent event) {
 			JOptionPane
 					.showMessageDialog(

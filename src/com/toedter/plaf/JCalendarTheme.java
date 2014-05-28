@@ -54,75 +54,90 @@ public class JCalendarTheme extends DefaultMetalTheme {
 	public JCalendarTheme() {
 	}
 
+	@Override
 	public String getName() {
 		return "JCalendar Theme";
 	}
 
-	protected Font getFont() {
+	static protected Font getFont() {
 		return new Font("Dialog", Font.PLAIN, 12);
 	}
 
+	@Override
 	public FontUIResource getSystemTextFont() {
 		return standardFont;
 	}
 
+	@Override
 	public FontUIResource getUserTextFont() {
 		return standardFont;
 	}
 
+	@Override
 	public FontUIResource getControlTextFont() {
 		return standardFont;
 	}
 
+	@Override
 	public FontUIResource getMenuTextFont() {
 		return standardFont;
 	}
 
+	@Override
 	protected ColorUIResource getPrimary1() {
 		return BLUE_MEDIUM_DARK;
 	}
 
+	@Override
 	protected ColorUIResource getPrimary2() {
 		return BLUE_LOW_MEDIUM;
 	}
 
+	@Override
 	protected ColorUIResource getPrimary3() {
 		return BLUE_LOW_LIGHTEST;
 	}
 
+	@Override
 	protected ColorUIResource getSecondary1() {
 		return secondary1;
 	}
 
+	@Override
 	protected ColorUIResource getSecondary2() {
 		return secondary2;
 	}
 
+	@Override
 	protected ColorUIResource getSecondary3() {
 		return secondary3;
 	}
 
+	@Override
 	public ColorUIResource getFocusColor() {
 		return ORANGE_FOCUS;
 	}
 
+	@Override
 	public ColorUIResource getPrimaryControlShadow() {
 		return getPrimary3();
 	}
 
+	@Override
 	public ColorUIResource getMenuSelectedBackground() {
 		return getPrimary1();
 	}
 
+	@Override
 	public ColorUIResource getMenuSelectedForeground() {
 		return WHITE;
 	}
 
-	public ColorUIResource getMenuItemBackground() {
+	static public ColorUIResource getMenuItemBackground() {
 		return WHITE;
 	}
 
-	public ColorUIResource getToggleButtonCheckColor() {
+	static public ColorUIResource getToggleButtonCheckColor() {
 		return GREEN_CHECK;
 	}
 }

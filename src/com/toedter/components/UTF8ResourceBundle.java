@@ -51,10 +51,12 @@ public abstract class UTF8ResourceBundle {
 			this.propertyResourceBundle = bundle;
 		}
 
-		public Enumeration getKeys() {
+		@Override
+		public Enumeration<String> getKeys() {
 			return propertyResourceBundle.getKeys();
 		}
 
+		@Override
 		protected Object handleGetObject(String key) {
 			String value = (String) propertyResourceBundle.handleGetObject(key);
 			if (value != null) {

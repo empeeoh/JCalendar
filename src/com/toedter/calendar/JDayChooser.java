@@ -37,7 +37,6 @@ import java.text.DateFormatSymbols;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
 
@@ -101,7 +100,7 @@ public class JDayChooser extends JPanel implements ActionListener, KeyListener,
 
 	protected int maxDayCharacters;
 
-	protected List dateEvaluators;
+	protected List<IDateEvaluator> dateEvaluators;
 	
 	protected MinMaxDateEvaluator minMaxDateEvaluator;
 
@@ -122,7 +121,7 @@ public class JDayChooser extends JPanel implements ActionListener, KeyListener,
 		setName("JDayChooser");
 		setBackground(Color.blue);
 
-		dateEvaluators = new ArrayList(1);
+		dateEvaluators = new ArrayList<>(1);
 		minMaxDateEvaluator = new MinMaxDateEvaluator();
 		addDateEvaluator(minMaxDateEvaluator);
 
@@ -158,6 +157,7 @@ public class JDayChooser extends JPanel implements ActionListener, KeyListener,
 					days[index] = new JButton("x") {
 						private static final long serialVersionUID = -7433645992591669725L;
 
+						@Override
 						public void paint(Graphics g) {
 							if ("Windows".equals(UIManager.getLookAndFeel()
 									.getID())) {
@@ -358,10 +358,8 @@ public class JDayChooser extends JPanel implements ActionListener, KeyListener,
 				days[i + n + 7].setBackground(oldDayBackgroundColor);
 			}
 
-			Iterator iterator = dateEvaluators.iterator(); 
 			days[i + n + 7].setEnabled(true);
-			while (iterator.hasNext()) {
-				IDateEvaluator dateEvaluator = (IDateEvaluator) iterator.next();
+			for(IDateEvaluator dateEvaluator: dateEvaluators){
 				if (dateEvaluator.isSpecial(day)) {
 					days[i + n + 7].setForeground(dateEvaluator
 							.getSpecialForegroundColor());
@@ -400,6 +398,7 @@ public class JDayChooser extends JPanel implements ActionListener, KeyListener,
 	 * 
 	 * @see #setLocale
 	 */
+	@Override
 	public Locale getLocale() {
 		return locale;
 	}
@@ -412,6 +411,7 @@ public class JDayChooser extends JPanel implements ActionListener, KeyListener,
 	 * 
 	 * @see #getLocale
 	 */
+	@Override
 	public void setLocale(Locale locale) {
 		if (!initialized) {
 			super.setLocale(locale);
@@ -430,9 +430,10 @@ public class JDayChooser extends JPanel implements ActionListener, KeyListener,
 	 * 
 	 * @see #getDay
 	 */
-	public void setDay(int d) {
-		if (d < 1) {
-			d = 1;
+	public void setDay(final int d) {
+		int td = d;
+		if (td < 1) {
+			td = 1;
 		}
 		Calendar tmpCalendar = (Calendar) calendar.clone();
 		tmpCalendar.set(Calendar.DAY_OF_MONTH, 1);
@@ -441,12 +442,12 @@ public class JDayChooser extends JPanel implements ActionListener, KeyListener,
 
 		int maxDaysInMonth = tmpCalendar.get(Calendar.DATE);
 
-		if (d > maxDaysInMonth) {
-			d = maxDaysInMonth;
+		if (td > maxDaysInMonth) {
+			td = maxDaysInMonth;
 		}
 
 		int oldDay = day;
-		day = d;
+		day = td;
 
 		if (selectedDay != null) {
 			selectedDay.setBackground(oldDayBackgroundColor);
@@ -538,6 +539,7 @@ public class JDayChooser extends JPanel implements ActionListener, KeyListener,
 	 * @param font
 	 *            the new font
 	 */
+	@Override
 	public void setFont(Font font) {
 		if (days != null) {
 			for (int i = 0; i < 49; i++) {
@@ -557,6 +559,7 @@ public class JDayChooser extends JPanel implements ActionListener, KeyListener,
 	 * @param foreground
 	 *            the new foregroundColor
 	 */
+	@Override
 	public void setForeground(Color foreground) {
 		super.setForeground(foreground);
 
@@ -575,6 +578,7 @@ public class JDayChooser extends JPanel implements ActionListener, KeyListener,
 	 * @param e
 	 *            the ActionEvent
 	 */
+	@Override
 	public void actionPerformed(ActionEvent e) {
 		JButton button = (JButton) e.getSource();
 		String buttonText = button.getText();
@@ -595,6 +599,7 @@ public class JDayChooser extends JPanel implements ActionListener, KeyListener,
 	 * next day button. This causes the date chosen to always be incremented by
 	 * one day.
 	 */
+	@Override
 	public void focusGained(FocusEvent e) {
 		// JButton button = (JButton) e.getSource();
 		// String buttonText = button.getText();
@@ -611,6 +616,7 @@ public class JDayChooser extends JPanel implements ActionListener, KeyListener,
 	 * @param e
 	 *            the FocusEvent
 	 */
+	@Override
 	public void focusLost(FocusEvent e) {
 	}
 
@@ -621,6 +627,7 @@ public class JDayChooser extends JPanel implements ActionListener, KeyListener,
 	 * @param e
 	 *            the KeyEvent
 	 */
+	@Override
 	public void keyPressed(KeyEvent e) {
 		int offset = (e.getKeyCode() == KeyEvent.VK_UP) ? (-7) : ((e
 				.getKeyCode() == KeyEvent.VK_DOWN) ? (+7)
@@ -641,6 +648,7 @@ public class JDayChooser extends JPanel implements ActionListener, KeyListener,
 	 * @param e
 	 *            the KeyEvent
 	 */
+	@Override
 	public void keyTyped(KeyEvent e) {
 	}
 
@@ -650,6 +658,7 @@ public class JDayChooser extends JPanel implements ActionListener, KeyListener,
 	 * @param e
 	 *            the KeyEvent
 	 */
+	@Override
 	public void keyReleased(KeyEvent e) {
 	}
 
@@ -659,6 +668,7 @@ public class JDayChooser extends JPanel implements ActionListener, KeyListener,
 	 * @param enabled
 	 *            The new enabled value
 	 */
+	@Override
 	public void setEnabled(boolean enabled) {
 		super.setEnabled(enabled);
 
@@ -863,6 +873,7 @@ public class JDayChooser extends JPanel implements ActionListener, KeyListener,
 	/**
 	 * Updates the UI and sets the day button preferences.
 	 */
+	@Override
 	public void updateUI() {
 		super.updateUI();
 		setFont(Font.decode("Dialog Plain 11"));
@@ -1004,13 +1015,16 @@ public class JDayChooser extends JPanel implements ActionListener, KeyListener,
 			setBorderPainted(decorationBordersVisible);
 		}
 
+		@Override
 		public void addMouseListener(MouseListener l) {
 		}
 
+		@Override
 		public boolean isFocusable() {
 			return false;
 		}
 
+		@Override
 		public void paint(Graphics g) {
 			if ("Windows".equals(UIManager.getLookAndFeel().getID())) {
 				// this is a hack to get the background painted
@@ -1029,7 +1043,7 @@ public class JDayChooser extends JPanel implements ActionListener, KeyListener,
 			}
 			super.paint(g);
 		}
-	};
+	}
 
 	public void addDateEvaluator(IDateEvaluator dateEvaluator) {
 		dateEvaluators.add(dateEvaluator);

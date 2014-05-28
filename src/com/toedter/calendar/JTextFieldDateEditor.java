@@ -132,6 +132,7 @@ public class JTextFieldDateEditor extends JFormattedTextField implements IDateEd
 	 * 
 	 * @see com.toedter.calendar.IDateEditor#getDate()
 	 */
+	@Override
 	public Date getDate() {
 		try {
 			calendar.setTime(dateFormatter.parse(getText()));
@@ -151,6 +152,7 @@ public class JTextFieldDateEditor extends JFormattedTextField implements IDateEd
 	 * 
 	 * @see com.toedter.calendar.IDateEditor#setDate(java.util.Date)
 	 */
+	@Override
 	public void setDate(Date date) {
 		setDate(date, true);
 	}
@@ -198,6 +200,7 @@ public class JTextFieldDateEditor extends JFormattedTextField implements IDateEd
 	 * 
 	 * @see com.toedter.calendar.IDateEditor#setDateFormatString(java.lang.String)
 	 */
+	@Override
 	public void setDateFormatString(String dateFormatString) {
 		if (ignoreDatePatternChange) {
 			return;
@@ -219,6 +222,7 @@ public class JTextFieldDateEditor extends JFormattedTextField implements IDateEd
 	 * 
 	 * @see com.toedter.calendar.IDateEditor#getDateFormatString()
 	 */
+	@Override
 	public String getDateFormatString() {
 		return datePattern;
 	}
@@ -228,6 +232,7 @@ public class JTextFieldDateEditor extends JFormattedTextField implements IDateEd
 	 * 
 	 * @see com.toedter.calendar.IDateEditor#getUiComponent()
 	 */
+	@Override
 	public JComponent getUiComponent() {
 		return this;
 	}
@@ -239,6 +244,7 @@ public class JTextFieldDateEditor extends JFormattedTextField implements IDateEd
 	 * @param event
 	 *            the caret event
 	 */
+	@Override
 	public void caretUpdate(CaretEvent event) {
 		String text = getText().trim();
 		String emptyMask = maskPattern.replace('#', placeholder);
@@ -265,6 +271,7 @@ public class JTextFieldDateEditor extends JFormattedTextField implements IDateEd
 	 * 
 	 * @see java.awt.event.FocusListener#focusLost(java.awt.event.FocusEvent)
 	 */
+	@Override
 	public void focusLost(FocusEvent focusEvent) {
 		checkText();
 	}
@@ -283,6 +290,7 @@ public class JTextFieldDateEditor extends JFormattedTextField implements IDateEd
 	 * 
 	 * @see java.awt.event.FocusListener#focusGained(java.awt.event.FocusEvent)
 	 */
+	@Override
 	public void focusGained(FocusEvent e) {
 	}
 
@@ -291,6 +299,7 @@ public class JTextFieldDateEditor extends JFormattedTextField implements IDateEd
 	 * 
 	 * @see java.awt.Component#setLocale(java.util.Locale)
 	 */
+	@Override
 	public void setLocale(Locale locale) {
 		if (locale == getLocale() || ignoreDatePatternChange) {
 			return;
@@ -314,7 +323,7 @@ public class JTextFieldDateEditor extends JFormattedTextField implements IDateEd
 	 *            the date pattern
 	 * @return the mask
 	 */
-	public String createMaskFromDatePattern(String datePattern) {
+	static public String createMaskFromDatePattern(String datePattern) {
 		String symbols = "GyMdkHmsSEDFwWahKzZ";
 		String mask = "";
 		for (int i = 0; i < datePattern.length(); i++) {
@@ -368,6 +377,7 @@ public class JTextFieldDateEditor extends JFormattedTextField implements IDateEd
 	 * Returns the preferred size. If a date pattern is set, it is the size the
 	 * date pattern would take.
 	 */
+	@Override
 	public Dimension getPreferredSize() {
 		if (datePattern != null) {
 			return new JTextField(datePattern).getPreferredSize();
@@ -378,6 +388,7 @@ public class JTextFieldDateEditor extends JFormattedTextField implements IDateEd
 	/**
 	 * Validates the typed date and sets it (only if it is valid).
 	 */
+	@Override
 	public void actionPerformed(ActionEvent e) {
 		checkText();
 	}
@@ -387,6 +398,7 @@ public class JTextFieldDateEditor extends JFormattedTextField implements IDateEd
 	 * 4991597 and sets the background explicitely to a
 	 * TextField.inactiveBackground.
 	 */
+	@Override
 	public void setEnabled(boolean b) {
 		super.setEnabled(b);
 		if (!b) {
@@ -399,6 +411,7 @@ public class JTextFieldDateEditor extends JFormattedTextField implements IDateEd
 	 * 
 	 * @see com.toedter.calendar.IDateEditor#getMaxSelectableDate()
 	 */
+	@Override
 	public Date getMaxSelectableDate() {
 		return dateUtil.getMaxSelectableDate();
 	}
@@ -408,6 +421,7 @@ public class JTextFieldDateEditor extends JFormattedTextField implements IDateEd
 	 * 
 	 * @see com.toedter.calendar.IDateEditor#getMinSelectableDate()
 	 */
+	@Override
 	public Date getMinSelectableDate() {
 		return dateUtil.getMinSelectableDate();
 	}
@@ -417,6 +431,7 @@ public class JTextFieldDateEditor extends JFormattedTextField implements IDateEd
 	 * 
 	 * @see com.toedter.calendar.IDateEditor#setMaxSelectableDate(java.util.Date)
 	 */
+	@Override
 	public void setMaxSelectableDate(Date max) {
 		dateUtil.setMaxSelectableDate(max);
 		checkText();
@@ -427,6 +442,7 @@ public class JTextFieldDateEditor extends JFormattedTextField implements IDateEd
 	 * 
 	 * @see com.toedter.calendar.IDateEditor#setMinSelectableDate(java.util.Date)
 	 */
+	@Override
 	public void setMinSelectableDate(Date min) {
 		dateUtil.setMinSelectableDate(min);
 		checkText();
@@ -438,6 +454,7 @@ public class JTextFieldDateEditor extends JFormattedTextField implements IDateEd
 	 * @see com.toedter.calendar.IDateEditor#setSelectableDateRange(java.util.Date,
 	 *      java.util.Date)
 	 */
+	@Override
 	public void setSelectableDateRange(Date min, Date max) {
 		dateUtil.setSelectableDateRange(min, max);
 		checkText();

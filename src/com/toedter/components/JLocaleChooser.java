@@ -37,7 +37,7 @@ import javax.swing.JFrame;
  * @version $LastChangedRevision: 85 $
  * @version $LastChangedDate: 2006-04-28 13:50:52 +0200 (Fri, 28 Apr 2006) $
  */
-public class JLocaleChooser extends JComboBox implements ItemListener {
+public class JLocaleChooser extends JComboBox<String> implements ItemListener {
 	private static final long serialVersionUID = 8152430789764877431L;
 	protected JComponent component;
 
@@ -53,7 +53,8 @@ public class JLocaleChooser extends JComboBox implements ItemListener {
      *
      * @return the name value
      */
-    public String getName() {
+    @Override
+	public String getName() {
         return "JLocaleChoose";
     }
 
@@ -79,6 +80,7 @@ public class JLocaleChooser extends JComboBox implements ItemListener {
 	/**
 	 * The ItemListener for the locales.
 	 */
+	@Override
 	public void itemStateChanged(ItemEvent iEvt) {
 		String item = (String) iEvt.getItem();
 		int i;
@@ -121,6 +123,7 @@ public class JLocaleChooser extends JComboBox implements ItemListener {
 	 * 
 	 * @see #getLocale
 	 */
+	@Override
 	public void setLocale(Locale l) {
 		setLocale(l, true);
 	}
@@ -128,6 +131,7 @@ public class JLocaleChooser extends JComboBox implements ItemListener {
 	/**
 	 * Returns the locale.
 	 */
+	@Override
 	public Locale getLocale() {
 		return locale;
 	}

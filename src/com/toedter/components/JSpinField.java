@@ -81,16 +81,17 @@ public class JSpinField extends JPanel implements ChangeListener, CaretListener,
 	 */
 	public JSpinField(int min, int max) {
 		super();
+		int tmax = max;
 		setName("JSpinField");
 		this.min = min;
-		if (max < min)
-			max = min;
-		this.max = max;
+		if (tmax < min)
+			tmax = min;
+		this.max = tmax;
 		value = 0;
 		if (value < min)
 			value = min;
-		if (value > max)
-			value = max;
+		if (value > tmax)
+			value = tmax;
 
 		darkGreen = new Color(0, 150, 0);
 		setLayout(new BorderLayout());
@@ -105,6 +106,7 @@ public class JSpinField extends JPanel implements ChangeListener, CaretListener,
 			private static final long serialVersionUID = -6287709243342021172L;
 			private JTextField textField = new JTextField();
 
+			@Override
 			public Dimension getPreferredSize() {
 				Dimension size = super.getPreferredSize();
 				return new Dimension(size.width, textField.getPreferredSize().height);
@@ -130,6 +132,7 @@ public class JSpinField extends JPanel implements ChangeListener, CaretListener,
 	 * @param e
 	 *            the ChangeEvent
 	 */
+	@Override
 	public void stateChanged(ChangeEvent e) {
 		SpinnerNumberModel model = (SpinnerNumberModel) spinner.getModel();
 		int value = model.getNumber().intValue();
@@ -244,6 +247,7 @@ public class JSpinField extends JPanel implements ChangeListener, CaretListener,
 	 * @param font
 	 *            the new font
 	 */
+	@Override
 	public void setFont(Font font) {
 		if (textField != null) {
 			textField.setFont(font);
@@ -256,6 +260,7 @@ public class JSpinField extends JPanel implements ChangeListener, CaretListener,
 	 * @param fg
 	 *            the foreground
 	 */
+	@Override
 	public void setForeground(Color fg) {
 		if (textField != null) {
 			textField.setForeground(fg);
@@ -269,6 +274,7 @@ public class JSpinField extends JPanel implements ChangeListener, CaretListener,
 	 * @param e
 	 *            the caret event
 	 */
+	@Override
 	public void caretUpdate(CaretEvent e) {
 		try {
 			int testValue = Integer.valueOf(textField.getText()).intValue();
@@ -298,6 +304,7 @@ public class JSpinField extends JPanel implements ChangeListener, CaretListener,
 	 * @param e
 	 *            Description of the Parameter
 	 */
+	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (textField.getForeground().equals(darkGreen)) {
 			setValue(Integer.valueOf(textField.getText()).intValue());
@@ -310,6 +317,7 @@ public class JSpinField extends JPanel implements ChangeListener, CaretListener,
 	 * @param enabled
 	 *            The new enabled value
 	 */
+	@Override
 	public void setEnabled(boolean enabled) {
 		super.setEnabled(enabled);
 		spinner.setEnabled(enabled);
@@ -353,6 +361,7 @@ public class JSpinField extends JPanel implements ChangeListener, CaretListener,
 	 * 
 	 * @see java.awt.event.FocusListener#focusGained(java.awt.event.FocusEvent)
 	 */
+	@Override
 	public void focusGained(FocusEvent e) {
 	}
 
@@ -360,6 +369,7 @@ public class JSpinField extends JPanel implements ChangeListener, CaretListener,
 	 * The value of the text field is checked against a valid (green) value. If
 	 * valid, the value is set and a property change is fired.
 	 */
+	@Override
 	public void focusLost(FocusEvent e) {
 		actionPerformed(null);
 	}

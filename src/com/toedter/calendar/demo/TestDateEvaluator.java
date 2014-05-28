@@ -15,6 +15,7 @@ public class TestDateEvaluator implements IDateEvaluator {
 	private Color darkRed = new Color(0xa60007);
 	private Color lightRed = new Color(0xffb1b5);
 
+	@Override
 	public boolean isSpecial(Date date) {
 		calendar2.setTime(date);
 		for (int i = 2; i < 5; i++) {
@@ -27,18 +28,22 @@ public class TestDateEvaluator implements IDateEvaluator {
 		return false;
 	}
 
+	@Override
 	public Color getSpecialForegroundColor() {
 		return darkGreen;
 	}
 
+	@Override
 	public Color getSpecialBackroundColor() {
 		return lightGreen;
 	}
 
+	@Override
 	public String getSpecialTooltip() {
 		return "Special Day!";
 	}
 
+	@Override
 	public boolean isInvalid(Date date) {
 		calendar2.setTime(date);
 		for (int i = 4; i < 6; i++) {
@@ -51,14 +56,17 @@ public class TestDateEvaluator implements IDateEvaluator {
 		return false;
 	}
 	
+	@Override
 	public Color getInvalidForegroundColor() {
 		return darkRed;
 	}
 
+	@Override
 	public Color getInvalidBackroundColor() {
 		return null;
 	}
 
+	@Override
 	public String getInvalidTooltip() {
 		return "You cannot select this date...";
 	}

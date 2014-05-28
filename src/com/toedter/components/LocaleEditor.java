@@ -51,6 +51,7 @@ public class LocaleEditor extends java.beans.PropertyEditorSupport {
 	 * 
 	 * @return the locale strings
 	 */
+	@Override
 	public String[] getTags() {
 		for (int i = 0; i < length; i++)
 			localeStrings[i] = locales[i].getDisplayName();
@@ -67,6 +68,7 @@ public class LocaleEditor extends java.beans.PropertyEditorSupport {
 	 * @throws IllegalArgumentException
 	 *             not used
 	 */
+	@Override
 	public void setAsText(String text) throws IllegalArgumentException {
 		for (int i = 0; i < length; i++)
 			if (text.equals(locales[i].getDisplayName())) {
@@ -82,6 +84,7 @@ public class LocaleEditor extends java.beans.PropertyEditorSupport {
 	 * 
 	 * @return the locale string
 	 */
+	@Override
 	public String getAsText() {
 		return locale.getDisplayName();
 	}

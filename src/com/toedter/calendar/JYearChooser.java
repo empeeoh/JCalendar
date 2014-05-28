@@ -76,7 +76,8 @@ public class JYearChooser extends JSpinField {
      *
      * @param value the year value
      */
-    public void setValue(int value) {
+    @Override
+	public void setValue(int value) {
         setYear(value);
     }
 
