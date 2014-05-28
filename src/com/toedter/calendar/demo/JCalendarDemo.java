@@ -92,7 +92,7 @@ import com.toedter.components.JTitlePanel;
  * 
  * @author Kai Toedter
  * @version $LastChangedRevision: 166 $
- * @version $LastChangedDate: 2011-06-26 21:58:35 +0200 (So, 26 Jun 2011) $
+ * @version $LastChangedDate: 2011-06-26 21:58:35 +0200 (Sun, 26 Jun 2011) $
  */
 public class JCalendarDemo extends JApplet implements PropertyChangeListener {
 	private static final long serialVersionUID = 6739986412544494316L;

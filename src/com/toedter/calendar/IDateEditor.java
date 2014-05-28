@@ -32,7 +32,7 @@ import javax.swing.JComponent;
  * 
  * @author Kai Toedter
  * @version $LastChangedRevision: 142 $
- * @version $LastChangedDate: 2011-06-05 07:06:03 +0200 (So, 05 Jun 2011) $
+ * @version $LastChangedDate: 2011-06-05 07:06:03 +0200 (Sun, 05 Jun 2011) $
  * 
  */
 public interface IDateEditor {

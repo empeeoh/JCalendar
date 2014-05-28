@@ -33,7 +33,7 @@ import javax.swing.table.TableCellEditor;
  * 
  * @author Kai Toedter
  * @version $LastChangedRevision: 100 $
- * @version $LastChangedDate: 2006-06-04 14:36:06 +0200 (So, 04 Jun 2006) $
+ * @version $LastChangedDate: 2006-06-04 14:36:06 +0200 (Sun, 04 Jun 2006) $
  */
 public class JDateChooserCellEditor extends AbstractCellEditor implements
 		TableCellEditor {

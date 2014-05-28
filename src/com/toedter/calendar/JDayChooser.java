@@ -51,7 +51,7 @@ import javax.swing.UIManager;
  * 
  * @author Kai Toedter
  * @version $LastChangedRevision: 147 $
- * @version $LastChangedDate: 2011-06-06 20:36:53 +0200 (Mo, 06 Jun 2011) $
+ * @version $LastChangedDate: 2011-06-06 20:36:53 +0200 (Mon, 06 Jun 2011) $
  */
 public class JDayChooser extends JPanel implements ActionListener, KeyListener,
 		FocusListener {

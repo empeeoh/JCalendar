@@ -31,7 +31,7 @@ import javax.swing.plaf.metal.DefaultMetalTheme;
  * 
  * @author Kai Toedter
  * @version $LastChangedRevision: 85 $
- * @version $LastChangedDate: 2006-04-28 13:50:52 +0200 (Fr, 28 Apr 2006) $
+ * @version $LastChangedDate: 2006-04-28 13:50:52 +0200 (Fri, 28 Apr 2006) $
  */
 public class JCalendarTheme extends DefaultMetalTheme {
 	static final ColorUIResource secondary1 = new ColorUIResource(128, 128, 128);

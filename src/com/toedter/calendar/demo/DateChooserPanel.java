@@ -41,7 +41,7 @@ import com.toedter.calendar.JSpinnerDateEditor;
  * 
  * @author Kai Toedter
  * @version $LastChangedRevision: 153 $
- * @version $LastChangedDate: 2011-06-09 16:49:22 +0200 (Do, 09 Jun 2011) $
+ * @version $LastChangedDate: 2011-06-09 16:49:22 +0200 (Thu, 09 Jun 2011) $
  */
 public class DateChooserPanel extends JPanel implements PropertyChangeListener {
 	private static final long serialVersionUID = -1282280858252793253L;

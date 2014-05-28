@@ -46,7 +46,7 @@ import com.toedter.components.UTF8ResourceBundle;
  * 
  * @author Kai Toedter
  * @version $LastChangedRevision: 159 $
- * @version $LastChangedDate: 2011-06-22 21:07:24 +0200 (Mi, 22 Jun 2011) $
+ * @version $LastChangedDate: 2011-06-22 21:07:24 +0200 (Wed, 22 Jun 2011) $
  */
 public class JCalendar extends JPanel implements PropertyChangeListener {
 	private static final long serialVersionUID = 8913369762644440133L;

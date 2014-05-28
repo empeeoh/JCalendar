@@ -39,7 +39,7 @@ import javax.swing.border.Border;
  *
  * @author Kai Toedter
  * @version $LastChangedRevision: 139 $
- * @version $LastChangedDate: 2011-06-04 19:50:51 +0200 (Sa, 04 Jun 2011) $
+ * @version $LastChangedDate: 2011-06-04 19:50:51 +0200 (Sat, 04 Jun 2011) $
  */
 public class JTitlePanel extends JPanel {
 	private static final long serialVersionUID = 9104873267039717087L;

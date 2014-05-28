@@ -52,7 +52,7 @@ import javax.swing.event.ChangeListener;
  * 
  * @author Kai Toedter
  * @version $LastChangedRevision: 149 $
- * @version $LastChangedDate: 2011-06-07 19:05:02 +0200 (Di, 07 Jun 2011) $
+ * @version $LastChangedDate: 2011-06-07 19:05:02 +0200 (Tue, 07 Jun 2011) $
  */
 public class JDateChooser extends JPanel implements ActionListener,
 		PropertyChangeListener {

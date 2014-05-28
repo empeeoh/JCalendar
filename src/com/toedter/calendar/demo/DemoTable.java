@@ -37,7 +37,7 @@ import com.toedter.calendar.JDateChooserCellEditor;
  * 
  * @author Kai Toedter
  * @version $LastChangedRevision: 119 $
- * @version $LastChangedDate: 2009-05-04 17:47:56 +0200 (Mo, 04 Mai 2009) $
+ * @version $LastChangedDate: 2009-05-04 17:47:56 +0200 (Mon, 04 May 2009) $
  */
 public class DemoTable extends JPanel {
 	private static final long serialVersionUID = -2823838920746867592L;
