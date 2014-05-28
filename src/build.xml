@@ -32,7 +32,6 @@
 	<property name="src.tests" value="test-junit4" />
 	<property name="reports.tests" value="test-reports" />
 	<property name="junit.jar" value="junit-4.6.jar" />
-	<property name="web.dir" value="d:/Apache2.2/htdocs/jcalendar/ibuild" />
 
 	<!-- ===================================================================== -->
 	<!-- COMPILER: classic (JDK 1.1 & 1.2), modern or jikes                    -->
@@ -72,7 +71,7 @@
 				</patternset>
 			</fileset>
 		</copy>
-		<javac srcdir="${src.dir}" destdir="${build.dir}" classpath="lib/${looks.jar};lib/${common.jar}" debug="off" deprecation="on" optimize="on" source="1.4" />
+		<javac srcdir="${src.dir}" destdir="${build.dir}" classpath="lib/${looks.jar};lib/${common.jar}" includeantruntime="false" debug="off" deprecation="on" optimize="on" source="1.7" />
 	</target>
 
 	<!-- ===================================================================== -->
