@@ -24,6 +24,7 @@ import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.Graphics;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.text.DateFormatSymbols;
@@ -45,8 +46,8 @@ import javax.swing.event.ChangeListener;
  * JMonthChooser is a bean for choosing a month.
  * 
  * @author Kai Toedter
- * @version $LastChangedRevision: 159 $
- * @version $LastChangedDate: 2011-06-22 21:07:24 +0200 (Mi, 22 Jun 2011) $
+ * @version $LastChangedRevision: 190 $
+ * @version $LastChangedDate: 2011-09-07 14:08:03 +0200 (Wed, 07 Sep 2011) $
  */
 public class JMonthChooser extends JPanel implements ItemListener,
 		ChangeListener {
@@ -105,12 +106,12 @@ public class JMonthChooser extends JPanel implements ItemListener,
 			spinner = new JSpinner() {
 				private static final long serialVersionUID = 1L;
 
-				private JTextField textField = new JTextField();
+				private final JTextField textField = new JTextField();
 
 				public Dimension getPreferredSize() {
 					Dimension size = super.getPreferredSize();
-					return new Dimension(size.width, textField
-							.getPreferredSize().height);
+					return new Dimension(size.width,
+							textField.getPreferredSize().height);
 				}
 			};
 			spinner.addChangeListener(this);
@@ -336,7 +337,7 @@ public class JMonthChooser extends JPanel implements ItemListener,
 	 * @return the combo box
 	 */
 	public Component getComboBox() {
-		return this.comboBox;
+		return comboBox;
 	}
 
 	/**
@@ -360,11 +361,12 @@ public class JMonthChooser extends JPanel implements ItemListener,
 		return hasSpinner;
 	}
 
-    /**
-     * Sets the font for this component.
-     *
-     * @param font the desired <code>Font</code> for this component
-     */
+	/**
+	 * Sets the font for this component.
+	 * 
+	 * @param font
+	 *            the desired <code>Font</code> for this component
+	 */
 	public void setFont(Font font) {
 		if (comboBox != null) {
 			comboBox.setFont(font);
@@ -386,6 +388,13 @@ public class JMonthChooser extends JPanel implements ItemListener,
 				spinner.setBorder(new EmptyBorder(0, 0, 0, 0));
 			}
 		}
+	}
+
+	public void paintComponent(Graphics g) {
+		if ("Nimbus".equals(UIManager.getLookAndFeel().getID())) {
+			getParent().repaint(); // fixes repaint bug in Nimbus L&F
+		}
+		super.paintComponent(g);
 	}
 
 	/**
