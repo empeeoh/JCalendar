@@ -447,6 +447,7 @@ public class JCalendarDemo extends JApplet implements PropertyChangeListener {
 
 			propertyPanel.setLayout(gridbag);
 
+			@SuppressWarnings("unused")
 			int count = 0;
 
 			String[] types = new String[] { "class java.util.Locale",
