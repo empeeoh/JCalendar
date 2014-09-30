@@ -13,7 +13,7 @@ public class TestDateEvaluator implements IDateEvaluator {
 	private Color darkGreen = new Color(0x007F00);
 	private Color lightGreen = new Color(0xbbebc8);
 	private Color darkRed = new Color(0xa60007);
-	private Color lightRed = new Color(0xffb1b5);
+	//private Color lightRed = new Color(0xffb1b5);
 
 	@Override
 	public boolean isSpecial(Date date) {
