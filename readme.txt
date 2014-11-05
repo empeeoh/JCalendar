@@ -1,3 +1,10 @@
+v1.4.3.v20140929
+-Converted the project for maven management.
+-Fixed a bunch of compiler warnings for Java1.7 code compliance. 
+
+v1.4.2.v20140528
+-Fixed a memory leak in JDateChooser
+
 =======================================================================
 JCalendar - v1.4.1.v201109071408 - 09/07/2011 - Readme File  - 
 =======================================================================
